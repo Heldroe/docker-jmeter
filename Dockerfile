@@ -18,7 +18,9 @@ RUN     mkdir -p ${JMETER_HOME} && \
         curl -L --silent ${JMETER_DOWNLOAD_URL} | tar -xz --strip=1 -C ${JMETER_HOME} && \
         curl -L --silent http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.2.1.zip -o /tmp/jmeter-plugins-standard.zip && \
         unzip -o -d /opt/jmeter/ /tmp/jmeter-plugins-standard.zip && \
-        rm /tmp/jmeter-plugins-standard.zip && \
-        curl -L --silent -o /opt/jmeter/lib/postgresql-9.0-801.jdbc4.jar http://central.maven.org/maven2/postgresql/postgresql/9.0-801.jdbc4/postgresql-9.0-801.jdbc4.jar
+        rm /tmp/jmeter-plugins-standard.zip
+
+RUN     curl -L --silent -o /opt/jmeter/lib/postgresql-9.0-801.jdbc4.jar \
+        http://central.maven.org/maven2/postgresql/postgresql/9.0-801.jdbc4/postgresql-9.0-801.jdbc4.jar
 
 WORKDIR     ${JMETER_HOME}
